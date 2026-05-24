@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — studio gorillaSTAR / yellowAMIKO</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #EBFC2D;
+    --teal: #5BB0AC;
+    --light: #E7E7E7;
+    --pink: #FF2172;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --off-white: #F7F7F7;
+    --gray: #555555;
+    --border: #E0E0E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Noto Sans JP', sans-serif;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--yellow);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--black);
+    text-decoration: none;
+    line-height: 1.1;
+  }
+
+  .nav-logo span {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--teal);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.2em;
+  }
+
+  .back-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: var(--pink); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 8rem 2rem 4rem;
+    background: var(--off-white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-header-inner { max-width: 860px; margin: 0 auto; }
+
+  .page-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    letter-spacing: 0.06em;
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .page-note {
+    background: rgba(255,33,114,0.08);
+    border-left: 3px solid var(--pink);
+    padding: 0.75rem 1rem;
+    font-size: 0.83rem;
+    color: var(--gray);
+    border-radius: 0 4px 4px 0;
+    max-width: 700px;
+  }
+
+  .page-note a { color: var(--teal); }
+
+  /* CONTENT */
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  /* MODELS */
+  .models-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 3rem;
+  }
+
+  .models-list li {
+    font-size: 0.85rem;
+    color: var(--gray);
+    padding: 0.6rem 1rem;
+    background: var(--off-white);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+    line-height: 1.5;
+  }
+
+  /* RIGHTS TABLE */
+  .rights-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 3rem;
+    font-size: 0.86rem;
+  }
+
+  .rights-table th {
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+
+  .rights-table td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--gray);
+    vertical-align: top;
+  }
+
+  .rights-table tr:nth-child(even) td { background: var(--off-white); }
+
+  .rights-table .label { font-weight: 700; color: var(--black); width: 160px; }
+
+  .ok { color: var(--teal); font-weight: 700; }
+  .ng { color: var(--pink); font-weight: 700; }
+  .req { color: #e67e00; font-weight: 700; }
+
+  /* SECTION BLOCKS */
+  .terms-section { margin-bottom: 3rem; }
+
+  .terms-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    color: var(--black);
+    border-bottom: 2px solid var(--yellow);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .terms-section h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin: 1.5rem 0 0.6rem;
+  }
+
+  .terms-section p {
+    font-size: 0.88rem;
+    line-height: 1.95;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+  }
+
+  .terms-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .terms-section ul li {
+    font-size: 0.86rem;
+    line-height: 1.75;
+    color: var(--gray);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .terms-section ul li::before {
+    content: '※';
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+    font-size: 0.75rem;
+  }
+
+  /* FAQ */
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    background: var(--off-white);
+    padding: 0.9rem 1.1rem;
+    font-size: 0.87rem;
+    font-weight: 700;
+    color: var(--black);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .faq-q::before {
+    content: 'Q.';
+    color: var(--teal);
+    font-family: 'Space Mono', monospace;
+    flex-shrink: 0;
+  }
+
+  .faq-a {
+    padding: 0.9rem 1.1rem;
+    font-size: 0.85rem;
+    line-height: 1.85;
+    color: var(--gray);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .faq-a::before {
+    content: 'A.';
+    color: var(--pink);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* LANG DIVIDER */
+  .lang-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 4rem 0 3rem;
+  }
+
+  .lang-divider::before,
+  .lang-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .lang-divider span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    white-space: nowrap;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--black);
+    color: rgba(255,255,255,0.35);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  footer a { color: var(--teal); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .rights-table .label { width: 110px; }
+    .models-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    studio gorillaSTAR
+    <span>yellowAMIKO</span>
+  </a>
+  <a class="back-link" href="index.html">← Back to Home</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-label">Rules</div>
+    <h1 class="page-title">TERMS OF SERVICE<br>利用規約</h1>
+    <div class="page-note">
+      ※アバターマーケットにて購入した場合は、
+      <a href="https://cluster.mu/terms" target="_blank" rel="noopener">cluster利用規約</a>
+      が適用されます。<br>
+      * If purchased at the Avatar Market, the <a href="https://cluster.mu/terms" target="_blank" rel="noopener">cluster Terms of Use</a> apply.
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- 対象モデル JA -->
+  <div class="terms-section">
+    <h2>販売モデルご利用にあたって</h2>
+    <p>「studio gorillaSTAR / yellowAMIKO」が販売する以下の３Dモデルご利用にあたっては、本利用規約に同意された場合にのみご利用下さい。</p>
+    <ul class="models-list" style="list-style:none;">
+      <li>「v-gurumi」シリーズ 第１弾 ペガサス</li>
+      <li>「v-gurumi」シリーズ 第１弾 バステト</li>
+      <li>「v-gurumi」シリーズ 第２弾 まねき猫</li>
+      <li>「OH!MY!V!」シリーズ 第１弾 ネコヘッドホン</li>
+      <li>「OH!MY!V!」シリーズ 第１弾 カエルヘッドホン</li>
+    </ul>
+  </div>
+
+  <!-- 利用条件 -->
+  <div class="terms-section">
+    <h2>利用条件 / Usage Rights</h2>
+    <table class="rights-table">
+      <tr>
+        <th>項目</th>
+        <th>日本語</th>
+        <th>English</th>
+      </tr>
+      <tr>
+        <td class="label">商用利用<br>Commercial Use</td>
+        <td><span class="ok">可能</span> ※ビデオゲーム開発用途を除き可能</td>
+        <td><span class="ok">Possible</span> *Possible except for use in video game development.</td>
+      </tr>
+      <tr>
+        <td class="label">改変<br>Modification</td>
+        <td><span class="ok">可能</span></td>
+        <td><span class="ok">Possible</span></td>
+      </tr>
+      <tr>
+        <td class="label">再配布<br>Redistribution</td>
+        <td><span class="ng">不可</span> ※データの一部でも不可</td>
+        <td><span class="ng">Not possible</span> *Not possible even for a part of the data</td>
+      </tr>
+      <tr>
+        <td class="label">クレジット<br>Credit</td>
+        <td><span class="req">記載必須</span></td>
+        <td><span class="req">Description required</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 注意事項 JA -->
+  <div class="terms-section">
+    <h2>注意事項</h2>
+    <ul>
+      <li>公序良俗に反する利用はしないでください。</li>
+      <li>政治的信条の主張、宗教的信条の主張又はヘイトスピーチ目的の利用はしないでください。</li>
+      <li>ビデオゲーム開発用途として本データを一部でも含む使用はできません。</li>
+      <li>販売物の利用により、第三者よりクレーム、訴訟等を受けた場合、利用者が自らの費用と責任で当該クレーム、訴訟等に対応するものとします。</li>
+      <li>販売物の利用により、制作者（studio gorillaSTAR / yellowAMIKO）が何らかの損害を被った場合、利用者は当該損害を補償するものとします。</li>
+      <li>改変した本データを一部でも含むデータの再配布はできません。</li>
+      <li>著作者人格権は放棄していないため、クレジットの記載をしてください。Twitterの場合「3Dモデル @yellowAMIKO」、その他の場合「yellowAMIKO制作の汎用3Dモデル」、改変した場合は「yellowAMIKO制作の汎用3Dモデルを改変して使用」等の記載をしてください。</li>
+    </ul>
+
+    <h3>Notes (English)</h3>
+    <ul>
+      <li>Please do not use it against public order and morals.</li>
+      <li>Please do not use it for the purpose of asserting political or religious beliefs or for hate speech.</li>
+      <li>It is not possible to use even a part of this data for video game development purposes.</li>
+      <li>If a claim or lawsuit, etc. is received from a third party as a result of the use of the item for sale, the user shall respond to such a claim or lawsuit, etc. at his/her own expense and responsibility.</li>
+      <li>If the producer suffers any damage as a result of the use of the item for sale, the user shall compensate for such damage.</li>
+      <li>It is not possible to redistribute data containing any part of this data that has been modified.</li>
+      <li>As moral rights are not waived, please include a credit statement such as "3D model @yellowAMIKO" for Twitter, "Generic 3D model produced by yellowAMIKO" for others, or "Generic 3D model produced by yellowAMIKO, modified and used" when modified.</li>
+    </ul>
+  </div>
+
+  <!-- その他 -->
+  <div class="terms-section">
+    <h2>注意事項（Notes）</h2>
+    <ul>
+      <li>改変や本データの使用方法の個別サポートは、本商品に含まれません。<br>
+        <em style="font-style:normal;color:#888;font-size:0.82rem;">Individual support for modification or how to use this data is not included in this product.</em></li>
+      <li>商品の交換又は返品は受け付けないものとします。<br>
+        <em style="font-style:normal;color:#888;font-size:0.82rem;">Exchange or return of this product shall not be acceptable.</em></li>
+      <li>購入した時点で本利用規約に同意したものとします。<br>
+        <em style="font-style:normal;color:#888;font-size:0.82rem;">It shall be deemed that these Terms of Use have been accepted at the time of purchase.</em></li>
+    </ul>
+  </div>
+
+  <!-- FAQ -->
+  <div class="terms-section">
+    <h2>よくある質問 / FAQ</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">VRChat用に改変して利用しても良いでしょうか？<br>
+        <span style="font-weight:300;color:#888;font-size:0.9em;">May I modify it for use in VRChat?</span></div>
+      <div class="faq-a">
+        VRMモデル想定で制作していますので保障しませんが、以下の条件で利用可能です。<br>
+        ・Description（説明）にクレジット（イエローアミコ制作の汎用3Dモデルを改変して使用）を記載してください。<br>
+        ・Sharing（共有設定）はPrivateにしてください。<br><br>
+        <span style="color:#888;">We cannot make a guarantee as the product is produced assuming a VRM model, but it can be used under the following conditions.<br>
+        ・Please include a credit in the Description.<br>
+        ・Please set Sharing to Private.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">LIVE配信以外に使っても良いでしょうか？<br>
+        <span style="font-weight:300;color:#888;font-size:0.9em;">May I use it for purposes other than streaming?</span></div>
+      <div class="faq-a">
+        利用規約の範囲内であれば、クレジット記載の上、印刷物グッズや3D作品等に利用可能です。（購入者自身で改変した本モデルデータも同様です。）<br><br>
+        <span style="color:#888;">Yes, you can use it for printed goods or 3D works, etc. as long as it is within the scope of these Terms of Use and the credit is indicated. *The same applies to this model data modified by the purchaser himself/herself.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">改変した3Ｄモデルを販売してもよろしいでしょうか？<br>
+        <span style="font-weight:300;color:#888;font-size:0.9em;">May I sell the modified 3D model?</span></div>
+      <div class="faq-a">
+        できません。本モデルデータを一部でも含むデータの販売や配布は、再配布にあたり利用規約違反となります。ご注意ください。<br><br>
+        <span style="color:#888;">No, you cannot. Selling or distributing data that includes any part of this model data constitutes redistribution and is a violation of the Terms of Use. Please be careful.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">モーション撮影のため、データをモーションスタジオに渡したいです。</div>
+      <div class="faq-a">
+        お問い合わせからご相談ください。<br>
+        お問い合わせ先：<a href="https://forms.gle/ympkdrjdLavX2pKF7" target="_blank" rel="noopener" style="color:var(--teal);">お問い合わせフォーム</a>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">外部に改変の依頼をしたいです。<br>
+        <span style="font-weight:300;color:#888;font-size:0.9em;">I would like to request a modification to an outside party.</span></div>
+      <div class="faq-a">
+        購入者以外へのモデルデータのお渡しとなるので、ご遠慮ください。3Dモデル制作者のstudio gorillaSTAR / イエローアミコへの改変の依頼はできます。<br>
+        ご依頼お問い合わせ先：<a href="https://forms.gle/ympkdrjdLavX2pKF7" target="_blank" rel="noopener" style="color:var(--teal);">お問い合わせフォーム</a><br><br>
+        <span style="color:#888;">Please refrain from doing so, as you will be handing over the model data to someone other than the purchaser. Requests for modification to studio gorillaSTAR / yellowAMIKO are possible.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">VRoid Hubにモデルデータをアップロードしてもよろしいでしょうか？<br>
+        <span style="font-weight:300;color:#888;font-size:0.9em;">May I upload the model data to VRoid Hub?</span></div>
+      <div class="faq-a">
+        利用規約の範囲内かつ非公開設定に限りアップロード可能です。<br><br>
+        <span style="color:#888;">Uploading is possible as long as it is within the scope of the Terms of Use and the data is set to "Private".</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2024 studio gorillaSTAR / yellowAMIKO — All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>studio gorillaSTAR / yellowAMIKO</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #EBFC2D;
+    --teal: #5BB0AC;
+    --light: #E7E7E7;
+    --pink: #FF2172;
+    --hot-pink: #FF3381;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --off-white: #F7F7F7;
+    --gray: #555555;
+    --border: #E0E0E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Noto Sans JP', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--yellow);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -3px;
+    width: 0; height: 2px;
+    background: var(--pink);
+    transition: width 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HERO */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    padding-bottom: 4rem;
+    background: var(--off-white);
+    overflow: hidden;
+  }
+
+  .hero-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(to right, var(--yellow), var(--teal), var(--pink));
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.22;
+    pointer-events: none;
+  }
+
+  .hero-blob-1 { width: 500px; height: 500px; background: var(--yellow); top: -100px; left: -100px; }
+  .hero-blob-2 { width: 400px; height: 400px; background: var(--teal); bottom: -80px; right: -80px; }
+
+  .hero-video-wrap {
+    position: relative;
+    width: min(600px, 90vw);
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 0 0 3px var(--yellow);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-video-wrap iframe { width: 100%; height: 100%; display: block; }
+
+  .hero-title {
+    margin-top: 2rem;
+    text-align: center;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-title h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    letter-spacing: 0.08em;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .hero-title h1 em { color: var(--teal); font-style: normal; }
+
+  .hero-title p {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    color: var(--gray);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(0,0,0,0.25);
+    animation: bounce 2s infinite;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--teal), transparent);
+  }
+
+  /* SHARED */
+  section { padding: 6rem 2rem; }
+  .inner { max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    letter-spacing: 0.06em;
+    color: var(--black);
+    margin-bottom: 2rem;
+    line-height: 1;
+  }
+
+  /* ABOUT */
+  #about { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 0.93rem;
+    line-height: 2;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+
+  .about-credits h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .credit-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .credit-list li {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--gray);
+    padding-left: 1rem;
+    border-left: 3px solid var(--yellow);
+  }
+
+  /* WORKS */
+  #works { background: var(--off-white); }
+
+  .playlist-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+  }
+
+  .playlist-wrap iframe { width: 100%; height: 100%; display: block; }
+
+  .thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .thumb-item {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .thumb-item:hover { transform: translateY(-2px); border-color: var(--teal); }
+  .thumb-item.active { border-color: var(--yellow); }
+
+  .thumb-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .thumb-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.3);
+    color: white;
+    font-size: 1.4rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .thumb-item:hover .thumb-overlay { opacity: 1; }
+  .thumb-item.active .thumb-overlay { opacity: 0; }
+
+  .other-credits {
+    margin-top: 2.5rem;
+  }
+
+  .other-credits h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .other-credits-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .other-credits-list li {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--gray);
+    padding: 0.7rem 1rem;
+    background: var(--white);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* LINKS */
+  #links { background: var(--white); }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.1rem 1.25rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    background: var(--white);
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--yellow);
+    transform: translateX(-100%);
+    transition: transform 0.2s;
+    z-index: 0;
+  }
+
+  .link-card:hover::before { transform: translateX(0); }
+  .link-card:hover { border-color: var(--yellow); }
+  .link-card > * { position: relative; z-index: 1; }
+  .link-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+  /* CONTACT */
+  #contact { background: var(--off-white); text-align: center; }
+
+  .contact-desc {
+    color: var(--gray);
+    font-size: 0.92rem;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  }
+
+  .btn-primary:hover {
+    background: var(--pink);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(255,33,114,0.3);
+  }
+
+  /* TERMS LINK */
+  #terms-link { background: var(--white); text-align: center; }
+
+  .terms-card {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2.5rem 3rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .terms-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.8; }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border: 2px solid var(--black);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { background: var(--black); color: var(--yellow); }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--black);
+    color: rgba(255,255,255,0.35);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  footer a { color: var(--teal); text-decoration: none; }
+
+  .footer-links {
+    margin-top: 0.75rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.62rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .terms-card { padding: 1.75rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="logo.png" alt="studio gorillaSTAR">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#links">Links</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="terms.html">Terms</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/FLJLmPGnXm0?autoplay=1&mute=1&loop=1&playlist=FLJLmPGnXm0&controls=0&showinfo=0&rel=0"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<section id="about">
+  <div class="inner reveal">
+    <div class="section-label">Profile</div>
+    <div class="section-title">ABOUT</div>
+    <div class="about-text">
+      <p>studio gorillaSTAR では、3Dキャラクター・映像制作をメインに活動しています。</p>
+      <p>別名義「<a href="https://www.youtube.com/@yellowamiko" target="_blank" rel="noopener" style="color:var(--teal);">yellowAMIKO</a>」名義でも活動しています。</p>
+      <p>未就学児向け開発プロジェクト「<a href="https://poyoyonlearning.github.io/" target="_blank" rel="noopener" style="color:var(--teal);">PoYoYon Learning</a>」にも3Dモデル担当として参加しています。</p>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="inner reveal">
+    <div class="section-label">Portfolio</div>
+    <div class="section-title">WORKS</div>
+    <div class="playlist-wrap" id="main-player">
+      <iframe
+        id="yt-player"
+        src="https://www.youtube.com/embed/BaWuDYUn8lE?rel=0"
+        frameborder="0"
+        allow="encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="thumb-grid">
+      <div class="thumb-item active" onclick="switchVideo('BaWuDYUn8lE', this)">
+        <img src="https://img.youtube.com/vi/BaWuDYUn8lE/mqdefault.jpg" alt="制作実績 1">
+        <div class="thumb-overlay">▶</div>
+      </div>
+      <div class="thumb-item" onclick="switchVideo('IUgldlw8DD8', this)">
+        <img src="https://img.youtube.com/vi/IUgldlw8DD8/mqdefault.jpg" alt="制作実績 2">
+        <div class="thumb-overlay">▶</div>
+      </div>
+      <div class="thumb-item" onclick="switchVideo('JDxfWgkK_5A', this)">
+        <img src="https://img.youtube.com/vi/JDxfWgkK_5A/mqdefault.jpg" alt="制作実績 3">
+        <div class="thumb-overlay">▶</div>
+      </div>
+    </div>
+    <div class="other-credits">
+      <h3>その他 制作実績 / Other Works</h3>
+      <ul class="other-credits-list">
+        <li>『タイガーとレイクの大冒険』 レイクちゃん（DJ衣装） 3Dモデル制作</li>
+        <li>えのきのこ 配信用3Dアイテム「3D HOTDOG」制作</li>
+        <li>Dynabook株式会社　WebCMのキャラクター3Dモデル制作</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="links">
+  <div class="inner reveal">
+    <div class="section-label">Follow &amp; Shop</div>
+    <div class="section-title">LINKS</div>
+    <div class="link-grid">
+      <a class="link-card" href="https://x.com/yellowAMIKO" target="_blank" rel="noopener">
+        <span class="link-icon">𝕏</span><span>@yellowAMIKO</span>
+      </a>
+      <a class="link-card" href="https://yellowamiko.fanbox.cc/" target="_blank" rel="noopener">
+        <span class="link-icon">★</span><span>FANBOX</span>
+      </a>
+      <a class="link-card" href="https://gorillastar.booth.pm/" target="_blank" rel="noopener">
+        <span class="link-icon">🛍</span><span>BOOTH</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="inner reveal">
+    <div class="section-label">Get in touch</div>
+    <div class="section-title">CONTACT</div>
+    <p class="contact-desc">
+      3Dキャラクター制作・VTuberモデル制作のご依頼・ご相談はこちらから。<br>
+      For commissions and inquiries, please use the form below.
+    </p>
+    <a class="btn-primary" href="https://forms.gle/ympkdrjdLavX2pKF7" target="_blank" rel="noopener">
+      お問い合わせフォーム / CONTACT FORM
+    </a>
+  </div>
+</section>
+
+<section id="terms-link">
+  <div class="inner reveal">
+    <div class="section-label">Rules</div>
+    <div class="section-title">TERMS OF SERVICE</div>
+    <div class="terms-card">
+      <p>販売モデルの利用規約・よくある質問（日本語・English）は<br>下記ページをご確認ください。</p>
+      <a class="btn-secondary" href="terms.html">利用規約を読む / Read Terms →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>studio gorillaSTAR / yellowAMIKO</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  function switchVideo(videoId, el) {
+    document.getElementById('yt-player').src = 'https://www.youtube.com/embed/' + videoId + '?rel=0&autoplay=1';
+    document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+</script>
+</body>
+</html>
