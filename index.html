@@ -176,6 +176,62 @@
   /* CONTACT */
   #contact { background: var(--white); text-align: center; }
   .contact-desc { color: var(--gray); font-size: 0.92rem; line-height: 1.9; margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+  .vrm-spec {
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    text-align: left;
+    background: var(--off-white);
+    border-radius: 8px;
+    padding: 1.75rem 2rem;
+    border: 1px solid var(--border);
+  }
+
+  .vrm-spec h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+  }
+
+  .vrm-spec p {
+    font-size: 0.85rem;
+    line-height: 1.85;
+    color: var(--gray);
+    margin-bottom: 1.25rem;
+  }
+
+  .vrm-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .vrm-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem;
+  }
+
+  .vrm-spec-item img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .vrm-spec-item span {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--gray);
+  }
   .btn-primary {
     display: inline-block; padding: 1rem 2.5rem;
     background: var(--black); color: var(--yellow);
@@ -381,9 +437,28 @@
     <div class="section-label">Get in touch</div>
     <div class="section-title">CONTACT</div>
     <p class="contact-desc">
-      3Dキャラクター制作・VTuberモデル制作のご依頼・ご相談はこちらから。<br>
-      For commissions and inquiries, please use the form below.
+      ご依頼・ご相談はこちらから。
     </p>
+
+    <div class="vrm-spec">
+      <h3>VRM制作仕様について</h3>
+      <p>納品形式はVRM形式（VTuber・バーチャルキャラクター向けの3Dモデルファイル形式）です。基本的にVRM 0.x系（UniVRM 0.x）で制作します。<br>
+      指定がない場合は以下の仕様で制作します。</p>
+      <div class="vrm-spec-grid">
+        <div class="vrm-spec-item">
+          <img src="aiueo.gif" alt="口の動き">
+          <span>口：通常＋aiueoの母音</span>
+        </div>
+        <div class="vrm-spec-item">
+          <img src="eyes.gif" alt="目の動き">
+          <span>目：通常＋目閉じ、喜び、怒り、悲しみ、楽しい</span>
+        </div>
+        <div class="vrm-spec-item">
+          <img src="yure.gif" alt="揺れもの">
+          <span>揺れもの：髪＋（おまかせ）</span>
+        </div>
+      </div>
+    </div>
     <a class="btn-primary" href="https://forms.gle/ympkdrjdLavX2pKF7" target="_blank" rel="noopener">
       お問い合わせフォーム / CONTACT FORM
     </a>
