@@ -209,6 +209,17 @@
     margin-top: 1rem;
   }
 
+  @media (max-width: 640px) {
+    #hero { padding: 80px 1rem 60px; min-height: 0; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.62rem; }
+    .thumb-grid { grid-template-columns: repeat(3, 1fr); }
+    .models-thumb-grid { grid-template-columns: repeat(3, 1fr); }
+    .terms-cards { flex-direction: column; align-items: center; }
+    .terms-card { padding: 1.75rem 1.5rem; }
+    .vrm-spec-grid { grid-template-columns: 1fr; }
+  }
+
   .vrm-spec-item {
     display: flex;
     align-items: center;
@@ -439,6 +450,9 @@
     <p class="contact-desc">
       ご依頼・ご相談はこちらから。
     </p>
+    <a class="btn-primary" href="https://forms.gle/ympkdrjdLavX2pKF7" target="_blank" rel="noopener" style="margin-bottom:2.5rem;">
+      お問い合わせフォーム / CONTACT FORM
+    </a>
 
     <div class="vrm-spec">
       <h3>VRMモデルご依頼時の制作仕様について</h3>
@@ -459,9 +473,6 @@
         </div>
       </div>
     </div>
-    <a class="btn-primary" href="https://forms.gle/ympkdrjdLavX2pKF7" target="_blank" rel="noopener">
-      お問い合わせフォーム / CONTACT FORM
-    </a>
   </div>
 </section>
 
