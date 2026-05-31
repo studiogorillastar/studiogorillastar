@@ -1,1 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guideline — studio gorillaSTAR / yellowAMIKO</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #EBFC2D;
+    --teal: #5BB0AC;
+    --pink: #FF2172;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --off-white: #F7F7F7;
+    --gray: #555555;
+    --border: #E0E0E0;
+  }
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Noto Sans JP', sans-serif;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--yellow);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+
+  .back-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: var(--pink); }
+
+  .page-header {
+    padding: 8rem 2rem 4rem;
+    background: var(--off-white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-header-inner { max-width: 860px; margin: 0 auto; }
+
+  .page-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    letter-spacing: 0.06em;
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .page-desc {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: var(--gray);
+    max-width: 600px;
+  }
+
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  /* SECTION */
+  .guide-section {
+    margin-bottom: 4rem;
+  }
+
+  .guide-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.08em;
+    color: var(--black);
+    border-bottom: 2px solid var(--yellow);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .guide-section h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin: 1.75rem 0 0.75rem;
+  }
+
+  .guide-section p {
+    font-size: 0.88rem;
+    line-height: 1.95;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+  }
+
+  .guide-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .guide-section ul li {
+    font-size: 0.86rem;
+    line-height: 1.8;
+    color: var(--gray);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .guide-section ul li::before {
+    content: '※';
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+    font-size: 0.75rem;
+    top: 0.1rem;
+  }
+
+  .guide-section ul.bullet li::before {
+    content: '・';
+    color: var(--teal);
+  }
+
+  /* HASHTAG BADGES */
+  .hashtag {
+    display: inline-block;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+    margin: 0 0.25rem 0.5rem 0;
+  }
+
+  /* RULES GRID */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  .rule-card {
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: var(--gray);
+  }
+
+  .rule-card .rule-title {
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+  }
+
+  .rule-card.ok { border-left: 3px solid var(--teal); }
+  .rule-card.ng { border-left: 3px solid var(--pink); }
+
+  .ok-label { color: var(--teal); font-weight: 700; font-size: 0.75rem; }
+  .ng-label { color: var(--pink); font-weight: 700; font-size: 0.75rem; }
+
+  /* NOTE BOX */
+  .note-box {
+    background: var(--off-white);
+    border-left: 3px solid var(--teal);
+    padding: 1rem 1.25rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+    font-size: 0.84rem;
+    line-height: 1.85;
+    color: var(--gray);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 3rem 0;
+  }
+
+  /* CONTACT CTA */
+  .cta-box {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--off-white);
+    border-radius: 8px;
+    margin-top: 3rem;
+  }
+
+  .cta-box p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--pink);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  footer {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--black);
+    color: rgba(255,255,255,0.35);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  footer a { color: var(--teal); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .rules-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="studio gorillaSTAR">
+  </a>
+  <a class="back-link" href="index.html">← Back to Home</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-label">Guidelines</div>
+    <h1 class="page-title">GUIDELINE</h1>
+    <p class="page-desc">
+      yellowAMIKOのファンアート・二次創作・クリップ投稿に関するガイドラインです。<br>
+      ご投稿の際は以下の内容をご確認の上、お楽しみください。
+    </p>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ファンアート・クリップ投稿 -->
+  <div class="guide-section">
+    <h2>ファンアート・クリップ投稿について</h2>
+    <p>yellowAMIKOの活動を通じてたくさんの作品や体験を共有していただけることに感謝しています。以下のハッシュタグを使った投稿を歓迎しています。</p>
+
+    <div style="margin: 1.25rem 0;">
+      <span class="hashtag">#yellowAMIKO視聴者アート</span>
+      <span class="hashtag">#AMIKOclip</span>
+    </div>
+
+    <h3>#yellowAMIKO視聴者アート について</h3>
+    <p>yellowAMIKOの動画を参考に作ったもの、ファンアート（2D・3D・アナログ）の投稿にご利用ください。Skeb等のファンアートリクエストのイラストもご利用可能です。</p>
+    <ul>
+      <li>yellowAMIKO のX・YouTubeで使用させていただく場合があります。それ以外の用途で使用する場合は別途ご相談します。</li>
+      <li>Skebなどのファンアートリクエストの場合は、制作者様のクレジットを記載してください。（匿名希望の場合は不要です。）</li>
+      <li>X・動画・LIVE配信内で使用する際はクレジット（XアカウントID）を記載します。クレジット表記なしを希望する方は「クレジットの表記なしを希望」と記載いただければ対応します。</li>
+      <li>Xのシャドウバン対策として、投稿時に <strong>@yellowAMIKO</strong> でタグ付けすることをお勧めします。</li>
+    </ul>
+
+    <h3>#AMIKOclip について</h3>
+    <p>yellowAMIKOの動画・配信のクリップ（切り抜き動画）の投稿にご利用ください。</p>
+    <ul>
+      <li>クリップ機能を利用しURLを共有する場合、またはYouTubeの切り抜き動画の投稿が可能です。</li>
+      <li>yellowAMIKO のX・YouTubeで使用させていただく場合があります。</li>
+      <li>Xのシャドウバン対策として、投稿時に <strong>@yellowAMIKO</strong> でタグ付けすることをお勧めします。</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 二次創作ガイドライン -->
+  <div class="guide-section">
+    <h2>二次創作ガイドライン</h2>
+    <p>二次創作活動を楽しんでいただけるよう、ガイドラインを作成しました。以下の遵守事項を守っていただいている限り、二次創作（自作物のみ）活動に制限を設けません。</p>
+
+    <h3>対象</h3>
+    <div class="note-box">
+      本ガイドラインは法人は対象外です。以下の個人・団体が対象となります。
+    </div>
+    <ul class="bullet">
+      <li>個人または同人サークル等の趣味の範疇での利用（動画配信、イラストサイト等への投稿を含む）</li>
+      <li>同人イベント、自主通販ウェブサイト（BOOTH・STORES・SUZURIなど）、同人専門店での販売</li>
+    </ul>
+    <ul>
+      <li>法人の方がyellowAMIKOのコンテンツの利用を希望される場合は、お問い合わせフォームよりご連絡ください。</li>
+    </ul>
+
+    <h3>お願い</h3>
+    <p>yellowAMIKOの二次創作であることを明記してください。</p>
+    <ul>
+      <li>当該制作物がyellowAMIKO公式のもの、または公認・正式ライセンスを受けたものであるような誤解を招く表現は使わないでください。</li>
+    </ul>
+
+    <h3>素材の利用について</h3>
+    <div class="rules-grid">
+      <div class="rule-card ng">
+        <div class="ng-label">禁止</div>
+        <div class="rule-title">画像・映像</div>
+        複製・改変・トレース・スキャンして使用することを禁止します。参考にご自身で制作されたものは問題ありません。
+      </div>
+      <div class="rule-card ng">
+        <div class="ng-label">禁止</div>
+        <div class="rule-title">ロゴ・マーク・アイコン</div>
+        そのままの使用、および類似するものの制作を禁止します。
+      </div>
+      <div class="rule-card ng">
+        <div class="ng-label">禁止</div>
+        <div class="rule-title">音声データ</div>
+        配信等で使用されている音声データの複製・改変しての使用を禁止します。
+      </div>
+    </div>
+
+    <h3>制作物の販売について</h3>
+    <div class="rules-grid">
+      <div class="rule-card ok">
+        <div class="ok-label">販売可</div>
+        <div class="rule-title">印刷物・同人グッズ・同人誌</div>
+      </div>
+      <div class="rule-card ok">
+        <div class="ok-label">販売可</div>
+        <div class="rule-title">フィギュア・ペーパークラフト・手芸などの立体物</div>
+      </div>
+      <div class="rule-card ok">
+        <div class="ok-label">条件付き可</div>
+        <div class="rule-title">映像</div>
+        映像内にyellowAMIKOの二次創作であることを2秒間表示する場合に限り可。YouTube・Xへの投稿・アフィリエイト収益も可。
+      </div>
+      <div class="rule-card ng">
+        <div class="ng-label">販売不可</div>
+        <div class="rule-title">2D・3Dデータ</div>
+        データ形式での販売は禁止します。
+      </div>
+    </div>
+
+    <h3>注意事項</h3>
+    <ul>
+      <li>本ガイドラインは予告なく変更することがありますので、利用の際は都度最新の内容をご確認ください。</li>
+      <li>利用者によるyellowAMIKOのコンテンツ利用により第三者よりクレーム・訴訟等を受けた場合、利用者が自らの費用と責任で対応するものとします。</li>
+      <li>利用者の対象物利用によりyellowAMIKOが損害を被った場合、利用者は当該損害を補償するものとします。</li>
+      <li>利用条件を遵守していないと判断した場合は、yellowAMIKOの判断で権利行使をする場合があります。</li>
+      <li>公序良俗に反する利用はしないでください。</li>
+      <li>政治的・宗教的信条の主張またはヘイトスピーチ目的の利用はしないでください。</li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>ご不明な点はお気軽にお問い合わせください。</p>
+    <a class="btn-primary" href="https://forms.gle/ympkdrjdLavX2pKF7" target="_blank" rel="noopener">
+      お問い合わせフォーム
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p>studio gorillaSTAR / yellowAMIKO</p>
+</footer>
+
+</body>
+</html>
